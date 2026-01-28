@@ -8,27 +8,27 @@
 
 @font-face {
     font-family: 'Baloo';
-    src: url("../assets/fonts/Baloo_2/Baloo2-VariableFont_wght.ttf") format("truetype");
+    src: url("../assets/fonts/Baloo_2/dehinted-subset-Baloo2-Bold.woff2") format("woff2");
     @include font-metrics;
 }
 
 @font-face {
   font-family: "Montserrat Alternates";
-  src: url("../assets/fonts/Montserrat_Alternates/MontserratAlternates-Regular.ttf") format("truetype");
+  src: url("../assets/fonts/Montserrat_Alternates/dehinted-subset-MontserratAlternates-Regular.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
   @include font-metrics;
 }
 @font-face {
   font-family: "Montserrat Alternates";
-  src: url("../assets/fonts/Montserrat_Alternates/MontserratAlternates-Medium.ttf") format("truetype");
+  src: url("../assets/fonts/Montserrat_Alternates/dehinted-subset-MontserratAlternates-Medium.woff2") format("woff2");
   font-weight: 500;
   font-style: normal;
   @include font-metrics;
 }
 @font-face {
   font-family: "Montserrat Alternates";
-  src: url("../assets/fonts/Montserrat_Alternates/MontserratAlternates-Bold.ttf") format("truetype");
+  src: url("../assets/fonts/Montserrat_Alternates/dehinted-subset-MontserratAlternates-Bold.woff2") format("woff2");
   font-weight: bold;
   font-style: normal;
   @include font-metrics;
