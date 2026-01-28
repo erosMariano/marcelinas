@@ -14,14 +14,31 @@
     <!-- HERO -->
     <section class="hero">
         <div class="banner">
-            <img
-                src="./assets/img/marcia_marcelinas_e_alunos.avif"
-                alt="Márcia Marcelinas e alunos"
-                width="1920"
-                height="1080"
-                fetchpriority="high"
-                loading="eager"
-            />
+            <picture>
+                <!-- AVIF -->
+                <source
+                    type="image/avif"
+                    srcset="
+                    ./assets/img/banner-mobile.avif 480w,
+                    ./assets/img/banner-tablet.avif 768w,
+                    ./assets/img/banner-desktop.avif 1280w,
+                    ./assets/img/banner-full.avif 1920w
+                    "
+                    sizes="100vw"
+                />
+
+                <!-- fallback -->
+                <img
+                    src="./assets/img/banner-full.avif"
+                    alt="Márcia Marcelinas e alunos"
+                    width="1920"
+                    height="1080"
+                    loading="eager"
+                    fetchpriority="high"
+                    decoding="async"
+                />
+                </picture>
+
         </div>
 
         <div class="content">

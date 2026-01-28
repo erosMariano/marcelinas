@@ -9,7 +9,7 @@
 @font-face {
     font-family: 'Baloo';
     src: url("../assets/fonts/Baloo_2/Baloo2-VariableFont_wght.ttf") format("truetype");
-      
+    @include font-metrics;
 }
 
 @font-face {
@@ -17,11 +17,7 @@
   src: url("../assets/fonts/Montserrat_Alternates/MontserratAlternates-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
-  font-display: swap;
-  ascent-override: 90%;
-  descent-override: 22%;
-  line-gap-override: 0%;
-  size-adjust: 105%;
+  
 }
 @font-face {
   font-family: "Montserrat Alternates";
