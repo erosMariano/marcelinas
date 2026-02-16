@@ -529,8 +529,6 @@ window.addEventListener("load", () => {
 
   const openBtn = document.getElementById("openModal");
   const closeBtn = document.getElementById("closeModal");
-  const cancelBtn = document.getElementById("cancelBtn");
-  const confirmBtn = document.getElementById("confirmBtn");
   const modalOverlay = document.getElementById("modalOverlay");
   const modal = document.getElementById("modal");
 
@@ -583,12 +581,6 @@ window.addEventListener("load", () => {
   // Event listeners
   openBtn.addEventListener("click", openModal);
   closeBtn.addEventListener("click", closeModal);
-  cancelBtn.addEventListener("click", closeModal);
-
-  confirmBtn.addEventListener("click", () => {
-    alert("Confirmed!");
-    closeModal();
-  });
 
   // Close on overlay click
   modalOverlay.addEventListener("click", (e) => {
@@ -602,5 +594,50 @@ window.addEventListener("load", () => {
     if (e.key === "Escape" && modalOverlay.style.visibility === "visible") {
       closeModal();
     }
+  });
+
+  // Testemonials
+
+  // Definir estado inicial dos cards
+  gsap.set(".testemonials .card", {
+    opacity: 0,
+    y: 50,
+  });
+
+  // Animação dos cards ao aparecer na tela
+  gsap.utils.toArray(".testemonials .card").forEach((card, index) => {
+    gsap.to(card, {
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      delay: index * 0.15,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: ".testemonials", // Trigger na seção inteira
+        start: "top 80%", // Quando a seção chegar a 80% da viewport
+        toggleActions: "play none none reverse",
+        once: true, // Anima apenas uma vez
+      },
+    });
+  });
+
+  // Animação hover suave adicional
+  const cardsTestemonials = document.querySelectorAll(".testemonials .card");
+  cardsTestemonials.forEach((card) => {
+    card.addEventListener("mouseenter", () => {
+      gsap.to(card, {
+        scale: 1.02,
+        duration: 0.3,
+        ease: "power2.out",
+      });
+    });
+
+    card.addEventListener("mouseleave", () => {
+      gsap.to(card, {
+        scale: 1,
+        duration: 0.3,
+        ease: "power2.out",
+      });
+    });
   });
 });
