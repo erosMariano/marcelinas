@@ -353,7 +353,7 @@ window.addEventListener("load", () => {
 
   // Animação flutuante na imagem
   gsap.to(".faq-section-wrapper .image-container", {
-    y: -20,
+    y: -10,
     duration: 2,
     repeat: -1,
     yoyo: true,

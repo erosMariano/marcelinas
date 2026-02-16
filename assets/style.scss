@@ -695,6 +695,23 @@ h2 {
   padding: 80px 100px;
   position: relative;
 
+  .arrow-pink,
+  .arrow-blue {
+    position: absolute;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .arrow-pink {
+    right: 0;
+    top: 0px;
+  }
+  .arrow-blue {
+    left: 0;
+  }
+
   h2 {
     max-width: 989px;
     text-align: center;
@@ -840,6 +857,23 @@ h2 {
   // RESPONSIVIDADE
 
   // Tablets grandes (1024px - 1200px)
+
+  @media (max-width: 1400px) {
+    .arrow-pink {
+      top: 4.5rem;
+    }
+  }
+
+  @media (max-width: 1300px) {
+    .arrow-pink {
+      top: 3rem;
+      right: -10rem;
+    }
+    .arrow-blue {
+      top: 3rem;
+      left: -10rem;
+    }
+  }
   @media (max-width: 1200px) {
     padding: 60px 60px;
 
@@ -897,6 +931,10 @@ h2 {
   @media (max-width: 768px) {
     padding: 40px 20px;
 
+    .arrow-blue,
+    .arrow-pink {
+      display: none;
+    }
     h2 {
       font-size: 2rem;
       margin: 1rem auto;
@@ -1083,7 +1121,6 @@ h2 {
   .modal-content {
     color: #666;
     line-height: 1.6;
-    margin-bottom: 30px;
   }
 
   .btn {
@@ -1304,6 +1341,7 @@ h2 {
     flex-direction: column;
     min-height: 392px;
     height: auto;
+    padding: 24px 16px;
 
     .bg-img {
       position: absolute;
@@ -1325,6 +1363,7 @@ h2 {
       font-weight: 700;
       color: #fff;
       margin: 1rem 0 2rem 0;
+      text-align: center;
     }
   }
 
@@ -1332,7 +1371,6 @@ h2 {
     padding: 80px 24px;
 
     .container {
-      padding: 24px 16px;
       h2 {
         font-size: 1.5rem;
       }
@@ -1561,8 +1599,6 @@ h2 {
     transform: translateY(-20px);
   }
 }
-
-Copy
 
 // ========================================
 // MODAL DE VÍDEO

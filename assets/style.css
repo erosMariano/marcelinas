@@ -651,6 +651,21 @@ h2 {
   padding: 80px 100px;
   position: relative;
 }
+.cada-conquista .arrow-pink,
+.cada-conquista .arrow-blue {
+  position: absolute;
+}
+.cada-conquista .arrow-pink img,
+.cada-conquista .arrow-blue img {
+  width: 100%;
+}
+.cada-conquista .arrow-pink {
+  right: 0;
+  top: 0px;
+}
+.cada-conquista .arrow-blue {
+  left: 0;
+}
 .cada-conquista h2 {
   max-width: 989px;
   text-align: center;
@@ -777,6 +792,21 @@ h2 {
   margin-top: 0;
   margin-bottom: 0;
 }
+@media (max-width: 1400px) {
+  .cada-conquista .arrow-pink {
+    top: 4.5rem;
+  }
+}
+@media (max-width: 1300px) {
+  .cada-conquista .arrow-pink {
+    top: 3rem;
+    right: -10rem;
+  }
+  .cada-conquista .arrow-blue {
+    top: 3rem;
+    left: -10rem;
+  }
+}
 @media (max-width: 1200px) {
   .cada-conquista {
     padding: 60px 60px;
@@ -826,6 +856,10 @@ h2 {
 @media (max-width: 768px) {
   .cada-conquista {
     padding: 40px 20px;
+  }
+  .cada-conquista .arrow-blue,
+  .cada-conquista .arrow-pink {
+    display: none;
   }
   .cada-conquista h2 {
     font-size: 2rem;
@@ -986,7 +1020,6 @@ h2 {
 #modalOverlay .modal-content {
   color: #666;
   line-height: 1.6;
-  margin-bottom: 30px;
 }
 #modalOverlay .btn {
   padding: 12px 24px;
@@ -1177,6 +1210,7 @@ h2 {
   flex-direction: column;
   min-height: 392px;
   height: auto;
+  padding: 24px 16px;
 }
 .vamos-conversar .container .bg-img {
   position: absolute;
@@ -1200,13 +1234,11 @@ h2 {
   font-weight: 700;
   color: #fff;
   margin: 1rem 0 2rem 0;
+  text-align: center;
 }
 @media (max-width: 768px) {
   .vamos-conversar {
     padding: 80px 24px;
-  }
-  .vamos-conversar .container {
-    padding: 24px 16px;
   }
   .vamos-conversar .container h2 {
     font-size: 1.5rem;
@@ -1393,7 +1425,7 @@ h2 {
     transform: translateY(-20px);
   }
 }
-Copy .video-modal {
+.video-modal {
   display: none;
   position: fixed;
   z-index: 9999;
@@ -1404,7 +1436,7 @@ Copy .video-modal {
   background-color: rgba(0, 0, 0, 0.9);
   animation: fadeIn 0.3s ease;
 }
-Copy .video-modal.active {
+.video-modal.active {
   display: flex;
   align-items: center;
   justify-content: center;
