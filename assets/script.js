@@ -430,4 +430,177 @@ window.addEventListener("load", () => {
       },
     });
   });
+
+  // ========================================
+  // ANIMAÇÕES DA SEÇÃO CADA-CONQUISTA
+  // ========================================
+
+  // Função para animar números (counter)
+  function animateCounter(element, finalValue) {
+    const counter = { value: 0 };
+    const duration = 2; // duração da animação em segundos
+
+    gsap.to(counter, {
+      value: finalValue,
+      duration: duration,
+      ease: "power2.out",
+      onUpdate: function () {
+        // Se o número tiver '+', mantém o '+'
+        const hasPlus = element.textContent.includes("+");
+        const rounded = Math.round(counter.value);
+        element.textContent = hasPlus ? `${rounded}+` : rounded;
+      },
+    });
+  }
+
+  // Anima os cards de conteúdo da esquerda
+  gsap.utils.toArray(".cada-conquista .content").forEach((content, index) => {
+    gsap.from(content, {
+      scrollTrigger: {
+        trigger: content,
+        start: "top 80%",
+        once: true, // executa apenas uma vez
+        // markers: true // descomente para debug
+      },
+      opacity: 0,
+      x: -50,
+      duration: 0.8,
+      delay: index * 0.15, // delay progressivo para cada card
+      ease: "power2.out",
+    });
+  });
+
+  // Anima a persona (imagem central)
+  gsap.from(".cada-conquista .persona", {
+    scrollTrigger: {
+      trigger: ".cada-conquista .persona",
+      start: "top 80%",
+      once: true, // executa apenas uma vez
+    },
+    opacity: 0,
+    scale: 0.8,
+    duration: 1,
+    ease: "back.out(1.2)",
+  });
+
+  // Anima os cards da direita (com números)
+  gsap.utils
+    .toArray(".cada-conquista .content-right")
+    .forEach((content, index) => {
+      const numberElement = content.querySelector("p");
+      const textContent = numberElement.textContent.trim();
+
+      // Extrai o número (remove '+' se existir)
+      const finalValue = parseInt(textContent.replace("+", ""));
+
+      // Animação de entrada do card
+      gsap.from(content, {
+        scrollTrigger: {
+          trigger: content,
+          start: "top 80%",
+          once: true, // executa apenas uma vez
+          onEnter: () => {
+            // Inicia o contador quando o card entra na viewport
+            animateCounter(numberElement, finalValue);
+          },
+        },
+        opacity: 0,
+        x: 50,
+        duration: 0.8,
+        delay: index * 0.15,
+        ease: "power2.out",
+      });
+    });
+
+  // Anima o título h2 da seção
+  gsap.from(".cada-conquista h2", {
+    scrollTrigger: {
+      trigger: ".cada-conquista h2",
+      start: "top 85%",
+      once: true, // executa apenas uma vez
+    },
+    opacity: 0,
+    y: 30,
+    duration: 0.8,
+    ease: "power2.out",
+  });
+
+  // Animação do modal de video
+
+  const openBtn = document.getElementById("openModal");
+  const closeBtn = document.getElementById("closeModal");
+  const cancelBtn = document.getElementById("cancelBtn");
+  const confirmBtn = document.getElementById("confirmBtn");
+  const modalOverlay = document.getElementById("modalOverlay");
+  const modal = document.getElementById("modal");
+
+  // Timeline for opening animation
+  function openModal() {
+    modalOverlay.style.visibility = "visible";
+
+    const tl = gsap.timeline();
+
+    tl.to(modalOverlay, {
+      opacity: 1,
+      duration: 0.3,
+      ease: "power2.out",
+    }).to(
+      modal,
+      {
+        scale: 1,
+        opacity: 1,
+        duration: 0.5,
+        ease: "back.out(1.7)",
+      },
+      "-=0.1",
+    );
+  }
+
+  // Timeline for closing animation
+  function closeModal() {
+    const tl = gsap.timeline({
+      onComplete: () => {
+        modalOverlay.style.visibility = "hidden";
+      },
+    });
+
+    tl.to(modal, {
+      scale: 0.7,
+      opacity: 0,
+      duration: 0.3,
+      ease: "back.in(1.7)",
+    }).to(
+      modalOverlay,
+      {
+        opacity: 0,
+        duration: 0.2,
+        ease: "power2.in",
+      },
+      "-=0.1",
+    );
+  }
+
+  // Event listeners
+  openBtn.addEventListener("click", openModal);
+  closeBtn.addEventListener("click", closeModal);
+  cancelBtn.addEventListener("click", closeModal);
+
+  confirmBtn.addEventListener("click", () => {
+    alert("Confirmed!");
+    closeModal();
+  });
+
+  // Close on overlay click
+  modalOverlay.addEventListener("click", (e) => {
+    if (e.target === modalOverlay) {
+      closeModal();
+    }
+  });
+
+  // Close on ESC key
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modalOverlay.style.visibility === "visible") {
+      closeModal();
+    }
+  });
 });
