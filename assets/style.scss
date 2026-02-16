@@ -277,7 +277,7 @@ h2 {
     180.17deg,
     rgba(255, 255, 255, 0) 0.15%,
     rgba(255, 177, 213, 0.1) 10.74%,
-    rgba(178, 225, 255, 0.1) 89.4%,
+    rgba(178, 225, 255, 0.1) 63.68%,
     rgba(255, 255, 255, 0) 105.02%
   );
 
@@ -407,9 +407,11 @@ h2 {
     }
   }
 }
+/* Rectangle 35 */
 
 .nossos-servicos {
-  padding: 80px 0;
+  margin-top: -180px;
+  padding: 0 0 80px 0;
   background-color: #fff2f9;
 
   .container {
@@ -572,6 +574,122 @@ h2 {
   }
 }
 
+.nosso-processo {
+  padding: 80px 0 0px 0;
+
+  background: linear-gradient(180deg, #ffffff 0%, #ffffff 68.76%, #fff2f9 100%);
+
+  .tag {
+    margin-left: 0;
+    margin-bottom: 24px;
+  }
+  h2 {
+    color: #595959;
+    font-size: 3rem;
+    width: 100%;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .heading {
+    margin-left: 100px;
+  }
+  .scroll-section {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cards-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 0 50px 80px 100px;
+    gap: 40px;
+  }
+
+  .heading {
+    flex: 1 0 35%;
+  }
+
+  .card {
+    height: 80%;
+    flex: 1 0 50%;
+    border-radius: 24px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: inherit;
+      opacity: 1;
+      transition: opacity 0.3s ease;
+    }
+  }
+
+  .content-card {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+    max-width: 80%;
+    span {
+      border: 1px solid #fff;
+      background-color: rgba(255, 255, 255, 0.2);
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 100px;
+      font-family: "Montserrat Alternates", Arial, Helvetica, sans-serif;
+      font-weight: 500;
+      margin: 16px;
+      display: inline-block;
+    }
+
+    p {
+      color: #fff;
+      font-family: "Montserrat Alternates", Arial, Helvetica, sans-serif;
+      font-weight: 500;
+      margin: 16px;
+    }
+  }
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: inherit;
+  }
+
+  .card:last-child {
+    margin-right: 0px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 0px;
+    h2 {
+      font-size: 2rem;
+    }
+
+    .heading {
+      margin-left: 24px;
+    }
+    .cards-container {
+      padding-left: 24px;
+      height: 90vh;
+    }
+
+    .card {
+      flex: 1 0 100%;
+    }
+  }
+}
 .faq-section-wrapper {
   margin: 0 auto;
   background: linear-gradient(

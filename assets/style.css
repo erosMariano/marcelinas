@@ -262,7 +262,7 @@ h2 {
 
 .sobre-nos {
   padding: 80px 100px;
-  background: linear-gradient(180.17deg, rgba(255, 255, 255, 0) 0.15%, rgba(255, 177, 213, 0.1) 10.74%, rgba(178, 225, 255, 0.1) 89.4%, rgba(255, 255, 255, 0) 105.02%);
+  background: linear-gradient(180.17deg, rgba(255, 255, 255, 0) 0.15%, rgba(255, 177, 213, 0.1) 10.74%, rgba(178, 225, 255, 0.1) 63.68%, rgba(255, 255, 255, 0) 105.02%);
 }
 .sobre-nos h2 {
   font-size: 3rem;
@@ -384,8 +384,10 @@ h2 {
   }
 }
 
+/* Rectangle 35 */
 .nossos-servicos {
-  padding: 80px 0;
+  margin-top: -180px;
+  padding: 0 0 80px 0;
   background-color: #fff2f9;
 }
 .nossos-servicos .container {
@@ -533,6 +535,114 @@ h2 {
 @media (max-width: 400px) {
   .nossos-servicos .container {
     padding: 24px;
+  }
+}
+
+.nosso-processo {
+  padding: 80px 0 0px 0;
+  background: linear-gradient(180deg, #ffffff 0%, #ffffff 68.76%, #fff2f9 100%);
+}
+.nosso-processo .tag {
+  margin-left: 0;
+  margin-bottom: 24px;
+}
+.nosso-processo h2 {
+  color: #595959;
+  font-size: 3rem;
+  width: 100%;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.nosso-processo .heading {
+  margin-left: 100px;
+}
+.nosso-processo .scroll-section {
+  position: relative;
+  overflow: hidden;
+}
+.nosso-processo .cards-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0 50px 80px 100px;
+  gap: 40px;
+}
+.nosso-processo .heading {
+  flex: 1 0 35%;
+}
+.nosso-processo .card {
+  height: 80%;
+  flex: 1 0 50%;
+  border-radius: 24px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  position: relative;
+}
+.nosso-processo .card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: inherit;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+.nosso-processo .content-card {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
+  max-width: 80%;
+}
+.nosso-processo .content-card span {
+  border: 1px solid #fff;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 100px;
+  font-family: "Montserrat Alternates", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  margin: 16px;
+  display: inline-block;
+}
+.nosso-processo .content-card p {
+  color: #fff;
+  font-family: "Montserrat Alternates", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  margin: 16px;
+}
+.nosso-processo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: inherit;
+}
+.nosso-processo .card:last-child {
+  margin-right: 0px;
+}
+@media (max-width: 768px) {
+  .nosso-processo {
+    padding: 0px;
+  }
+  .nosso-processo h2 {
+    font-size: 2rem;
+  }
+  .nosso-processo .heading {
+    margin-left: 24px;
+  }
+  .nosso-processo .cards-container {
+    padding-left: 24px;
+    height: 90vh;
+  }
+  .nosso-processo .card {
+    flex: 1 0 100%;
   }
 }
 

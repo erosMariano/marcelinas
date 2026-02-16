@@ -1,4 +1,5 @@
 const lenis = new Lenis();
+const isMobile = window.innerWidth <= 768;
 
 // Synchronize Lenis scrolling with GSAP's ScrollTrigger plugin
 lenis.on("scroll", ScrollTrigger.update);
@@ -72,28 +73,53 @@ window.addEventListener("load", () => {
   // Seção de Nossos serviços
   const textItems = document.querySelectorAll(".text-item");
   const imageItems = document.querySelectorAll(".image-item");
-  const scrollSections = document.querySelectorAll(".scroll-section");
-  const isMobile = window.innerWidth <= 768;
+  const scrollSections = document.querySelectorAll(
+    ".nossos-servicos .scroll-section",
+  );
 
   if (!isMobile) {
     // Ativa o primeiro item
     textItems[0].classList.add("active");
     imageItems[0].classList.add("active");
 
+    let scrollTriggersArray = [];
+    let isManualClick = false;
+
     // Cria animação para cada seção
     scrollSections.forEach((section, index) => {
-      ScrollTrigger.create({
+      const trigger = ScrollTrigger.create({
         trigger: section,
-        start: "top center",
+        start: "top 0%",
         end: "bottom center",
-        onEnter: () => activateItem(index),
-        onEnterBack: () => activateItem(index),
+        onEnter: () => {
+          if (!isManualClick) activateItem(index);
+        },
+        onEnterBack: () => {
+          if (!isManualClick) activateItem(index);
+        },
       });
+      scrollTriggersArray.push(trigger);
     });
 
     textItems.forEach((item) => {
       item.addEventListener("click", () => {
-        activateItem(parseInt(item.dataset.index));
+        const index = parseInt(item.dataset.index);
+        isManualClick = true;
+        activateItem(index);
+
+        // Faz scroll suave até a seção correspondente
+        if (scrollSections[index]) {
+          lenis.scrollTo(scrollSections[index], {
+            offset: -window.innerHeight / 2,
+            duration: 1.2,
+            onComplete: () => {
+              // Reabilita os triggers após o scroll completar
+              setTimeout(() => {
+                isManualClick = false;
+              }, 100);
+            },
+          });
+        }
       });
     });
 
@@ -326,7 +352,7 @@ window.addEventListener("load", () => {
   });
 
   // Animação flutuante na imagem
-  gsap.to(".image-container", {
+  gsap.to(".faq-section-wrapper .image-container", {
     y: -20,
     duration: 2,
     repeat: -1,
@@ -367,6 +393,41 @@ window.addEventListener("load", () => {
       ease: "none",
       animation: scaleDown,
       toggleActions: "restart none none reverse",
+    });
+  });
+
+  // Nossos processos
+  const cardsProcess = gsap.utils.toArray(".nosso-processo .card");
+  const cardsContainer = document.querySelector(
+    ".nosso-processo .cards-container",
+  );
+  gsap.set(cardsProcess[0], { opacity: 1 });
+
+  const totalScroll =
+    cardsContainer.scrollWidth - window.innerWidth + (isMobile ? 24 : 50);
+  const scrollTrack = gsap.to(cardsContainer, {
+    x: -totalScroll,
+    duration: cardsProcess.length,
+    ease: "none",
+    scrollTrigger: {
+      trigger: ".nosso-processo .scroll-section",
+      start: `top ${isMobile ? "24px" : "80px"}`,
+      end: `+=${totalScroll}`,
+      scrub: true,
+      pin: true,
+    },
+  });
+
+  cardsProcess.forEach((card, index) => {
+    gsap.to(card, {
+      opacity: 1,
+      scrollTrigger: {
+        trigger: card,
+        start: "left 95%",
+        end: "left 90%",
+        scrub: true,
+        containerAnimation: scrollTrack,
+      },
     });
   });
 });
