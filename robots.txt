@@ -1,0 +1,13 @@
+# Espaço Marcelinas - Reforço Escolar Itabuna
+# www.espacomarcelinas.com.br
+
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+
+# Sitemaps
+Sitemap: https://www.espacomarcelinas.com.br/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 10

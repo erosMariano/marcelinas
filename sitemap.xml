@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Página Principal -->
+  <url>
+    <loc>https://www.espacomarcelinas.com.br/</loc>
+    <lastmod>2026-02-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://www.espacomarcelinas.com.br/assets/img/banner-full.avif</image:loc>
+      <image:title>Espaço Marcelinas - Reforço Escolar em Itabuna</image:title>
+      <image:caption>Márcia Marcelinas ensinando crianças em sala de aula</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.espacomarcelinas.com.br/assets/img/marcia-marcelina.png</image:loc>
+      <image:title>Márcia Marcelina - Pedagoga e Psicopedagoga</image:title>
+      <image:caption>Fundadora do Espaço Marcelinas</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Adicione outras páginas aqui quando criar -->
+  <!-- Exemplo:
+  <url>
+    <loc>https://www.espacomarcelinas.com.br/servicos</loc>
+    <lastmod>2026-02-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  -->
+
+</urlset>
