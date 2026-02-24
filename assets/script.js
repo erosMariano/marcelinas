@@ -1,20 +1,29 @@
+// ========================================
+// CONFIGURAÇÃO INICIAL
+// ========================================
+
 const lenis = new Lenis();
 const isMobile = window.innerWidth <= 768;
 
-// Synchronize Lenis scrolling with GSAP's ScrollTrigger plugin
+// Sincroniza o scroll suave do Lenis com o ScrollTrigger do GSAP
 lenis.on("scroll", ScrollTrigger.update);
 
-// Add Lenis's requestAnimationFrame (raf) method to GSAP's ticker
-// This ensures Lenis's smooth scroll animation updates on each GSAP tick
+// Adiciona o método requestAnimationFrame do Lenis ao ticker do GSAP
 gsap.ticker.add((time) => {
-  lenis.raf(time * 1000); // Convert time from seconds to milliseconds
+  lenis.raf(time * 1000);
 });
 
-// Disable lag smoothing in GSAP to prevent any delay in scroll animations
+// Desativa o lag smoothing do GSAP para evitar atrasos nas animações
 gsap.ticker.lagSmoothing(0);
 
+// ========================================
+// INICIALIZAÇÃO DAS ANIMAÇÕES
+// ========================================
+
 window.addEventListener("load", () => {
-  console.log("oii");
+  // ========================================
+  // SEÇÃO HERO - Animação Inicial
+  // ========================================
 
   const tl = gsap.timeline({
     defaults: { duration: 1, ease: "power3.out" },
@@ -44,6 +53,10 @@ window.addEventListener("load", () => {
       "-=0.6",
     );
 
+  // ========================================
+  // SEÇÃO POTENCIAL
+  // ========================================
+
   gsap.from(".potencial .tag, .potencial .container_imgs img, .potencial h2", {
     y: 50,
     opacity: 0,
@@ -70,7 +83,10 @@ window.addEventListener("load", () => {
     },
   });
 
-  // Seção de Nossos serviços
+  // ========================================
+  // SEÇÃO NOSSOS SERVIÇOS - Scroll interativo
+  // ========================================
+
   const textItems = document.querySelectorAll(".text-item");
   const imageItems = document.querySelectorAll(".image-item");
   const scrollSections = document.querySelectorAll(
@@ -78,14 +94,14 @@ window.addEventListener("load", () => {
   );
 
   if (!isMobile) {
-    // Ativa o primeiro item
+    // Inicializa o primeiro item como ativo
     textItems[0].classList.add("active");
     imageItems[0].classList.add("active");
 
     let scrollTriggersArray = [];
     let isManualClick = false;
 
-    // Cria animação para cada seção
+    // Cria ScrollTrigger para cada seção de serviço
     scrollSections.forEach((section, index) => {
       const trigger = ScrollTrigger.create({
         trigger: section,
@@ -101,19 +117,19 @@ window.addEventListener("load", () => {
       scrollTriggersArray.push(trigger);
     });
 
+    // Adiciona clique nos itens de texto para navegar entre serviços
     textItems.forEach((item) => {
       item.addEventListener("click", () => {
         const index = parseInt(item.dataset.index);
         isManualClick = true;
         activateItem(index);
 
-        // Faz scroll suave até a seção correspondente
+        // Scroll suave até a seção correspondente
         if (scrollSections[index]) {
           lenis.scrollTo(scrollSections[index], {
             offset: -window.innerHeight / 2,
             duration: 1.2,
             onComplete: () => {
-              // Reabilita os triggers após o scroll completar
               setTimeout(() => {
                 isManualClick = false;
               }, 100);
@@ -123,19 +139,18 @@ window.addEventListener("load", () => {
       });
     });
 
+    // Função para ativar um item específico
     function activateItem(index) {
-      console.log("Ativando item", index);
-      // Remove active de todos
+      // Remove active de todos os itens
       textItems.forEach((item) => item.classList.remove("active"));
       imageItems.forEach((item) => item.classList.remove("active"));
 
       // Adiciona active no item atual
       textItems[index].classList.add("active");
 
-      // Anima TODAS as imagens
+      // Anima todas as imagens com fade in/out
       imageItems.forEach((image, i) => {
         if (i === index) {
-          // Imagem atual: fade in
           gsap.to(image, {
             opacity: 1,
             duration: 0.6,
@@ -143,7 +158,6 @@ window.addEventListener("load", () => {
           });
           image.classList.add("active");
         } else {
-          // Outras imagens: fade out
           gsap.to(image, {
             opacity: 0,
             duration: 0.6,
@@ -153,6 +167,7 @@ window.addEventListener("load", () => {
       });
     }
 
+    // Define estado inicial das imagens
     imageItems.forEach((image, index) => {
       gsap.set(image, {
         opacity: index === 0 ? 1 : 0,
@@ -161,10 +176,10 @@ window.addEventListener("load", () => {
     });
   }
 
-  // FAQ
+  // ========================================
+  // SEÇÃO FAQ - Animações de entrada
+  // ========================================
 
-  // Animação inicial da página
-  // Animação quando chegar na seção FAQ
   gsap.from(".faq-section-wrapper .container", {
     scrollTrigger: {
       trigger: ".faq-section-wrapper",
@@ -177,31 +192,6 @@ window.addEventListener("load", () => {
     ease: "power3.out",
   });
 
-  gsap.from(".faq-content h1", {
-    scrollTrigger: {
-      trigger: ".faq-section-wrapper",
-      start: "top 80%",
-      toggleActions: "play none none none",
-    },
-    duration: 0.6,
-    y: 30,
-    opacity: 0,
-    delay: 0.3,
-    ease: "power2.out",
-  });
-
-  gsap.from(".faq-content > p", {
-    scrollTrigger: {
-      trigger: ".faq-section-wrapper",
-      start: "top 80%",
-      toggleActions: "play none none none",
-    },
-    duration: 0.6,
-    y: 20,
-    opacity: 0,
-    delay: 0.4,
-    ease: "power2.out",
-  });
 
   gsap.from(".faq-item", {
     scrollTrigger: {
@@ -252,7 +242,7 @@ window.addEventListener("load", () => {
     duration: 0.6,
     y: 20,
     opacity: 0,
-    delay: 0.9, // aparece depois da tag
+    delay: 0.9,
     ease: "power2.out",
   });
 
@@ -265,11 +255,14 @@ window.addEventListener("load", () => {
     duration: 0.6,
     y: 20,
     opacity: 0,
-    delay: 1.1, // aparece depois do h2
+    delay: 1.1,
     ease: "power2.out",
   });
 
-  // Funcionalidade do FAQ
+  // ========================================
+  // SEÇÃO FAQ - Funcionalidade do accordion
+  // ========================================
+
   const faqItems = document.querySelectorAll(".faq-item");
 
   faqItems.forEach((item) => {
@@ -281,7 +274,7 @@ window.addEventListener("load", () => {
     question.addEventListener("click", () => {
       const isOpen = item.classList.contains("active");
 
-      // Fecha todos os outros itens
+      // Fecha todos os outros itens antes de abrir o atual
       faqItems.forEach((otherItem) => {
         if (otherItem !== item && otherItem.classList.contains("active")) {
           otherItem.classList.remove("active");
@@ -302,8 +295,9 @@ window.addEventListener("load", () => {
         }
       });
 
-      // Toggle do item atual
+      // Toggle do item clicado
       if (isOpen) {
+        // Fecha o item
         item.classList.remove("active");
 
         gsap.to(answer, {
@@ -324,13 +318,13 @@ window.addEventListener("load", () => {
           ease: "power2.inOut",
         });
       } else {
+        // Abre o item
         item.classList.add("active");
 
-        // Calcula a altura do conteúdo
         const contentHeight = answerContent.scrollHeight;
 
         gsap.to(answer, {
-          height: contentHeight + 40, // +40 para padding
+          height: contentHeight + 40,
           duration: 0.4,
           ease: "power2.inOut",
         });
@@ -351,7 +345,7 @@ window.addEventListener("load", () => {
     });
   });
 
-  // Animação flutuante na imagem
+  // Animação flutuante contínua na imagem
   gsap.to(".faq-section-wrapper .image-container", {
     y: -10,
     duration: 2,
@@ -360,10 +354,16 @@ window.addEventListener("load", () => {
     ease: "power1.inOut",
   });
 
-  // Sobre nós
+  // ========================================
+  // SEÇÃO SOBRE NÓS
+  // ========================================
+
   const sec = document.getElementById("v4");
   const els = sec.querySelectorAll("h1,.toy,.cta-row,.pill-tag,.desc");
+
   gsap.set(els, { opacity: 0, y: 28 });
+
+  // Animação ao scroll
   gsap.to(els, {
     opacity: 1,
     y: 0,
@@ -372,7 +372,8 @@ window.addEventListener("load", () => {
     ease: "power2.out",
     scrollTrigger: { trigger: sec, start: "top 80%" },
   });
-  // Also trigger on load since it's the only section
+
+  // Animação ao carregar (caso seja a primeira seção visível)
   gsap.to(els, {
     opacity: 1,
     y: 0,
@@ -382,15 +383,22 @@ window.addEventListener("load", () => {
     delay: 0.2,
   });
 
-  // Nossos processos
+  // ========================================
+  // SEÇÃO NOSSO PROCESSO - Scroll horizontal
+  // ========================================
+
   const cardsProcess = gsap.utils.toArray(".nosso-processo .card");
   const cardsContainer = document.querySelector(
     ".nosso-processo .cards-container",
   );
+
   gsap.set(cardsProcess[0], { opacity: 1 });
 
+  // Calcula o scroll horizontal total
   const totalScroll =
     cardsContainer.scrollWidth - window.innerWidth + (isMobile ? 24 : 50);
+
+  // Cria animação de scroll horizontal
   const scrollTrack = gsap.to(cardsContainer, {
     x: -totalScroll,
     duration: cardsProcess.length,
@@ -404,6 +412,7 @@ window.addEventListener("load", () => {
     },
   });
 
+  // Anima cada card ao entrar na viewport durante o scroll horizontal
   cardsProcess.forEach((card, index) => {
     gsap.to(card, {
       opacity: 1,
@@ -418,20 +427,19 @@ window.addEventListener("load", () => {
   });
 
   // ========================================
-  // ANIMAÇÕES DA SEÇÃO CADA-CONQUISTA
+  // SEÇÃO CADA CONQUISTA
   // ========================================
 
-  // Função para animar números (counter)
+  // Função para animar contador de números
   function animateCounter(element, finalValue) {
     const counter = { value: 0 };
-    const duration = 2; // duração da animação em segundos
+    const duration = 2;
 
     gsap.to(counter, {
       value: finalValue,
       duration: duration,
       ease: "power2.out",
       onUpdate: function () {
-        // Se o número tiver '+', mantém o '+'
         const hasPlus = element.textContent.includes("+");
         const rounded = Math.round(counter.value);
         element.textContent = hasPlus ? `${rounded}+` : rounded;
@@ -439,29 +447,28 @@ window.addEventListener("load", () => {
     });
   }
 
-  // Anima os cards de conteúdo da esquerda
+  // Anima cards de conteúdo da esquerda
   gsap.utils.toArray(".cada-conquista .content").forEach((content, index) => {
     gsap.from(content, {
       scrollTrigger: {
         trigger: content,
         start: "top 80%",
-        once: true, // executa apenas uma vez
-        // markers: true // descomente para debug
+        once: true,
       },
       opacity: 0,
       x: -50,
       duration: 0.8,
-      delay: index * 0.15, // delay progressivo para cada card
+      delay: index * 0.15,
       ease: "power2.out",
     });
   });
 
-  // Anima a persona (imagem central)
+  // Anima a imagem central (persona)
   gsap.from(".cada-conquista .persona", {
     scrollTrigger: {
       trigger: ".cada-conquista .persona",
       start: "top 80%",
-      once: true, // executa apenas uma vez
+      once: true,
     },
     opacity: 0,
     scale: 0.8,
@@ -469,24 +476,20 @@ window.addEventListener("load", () => {
     ease: "back.out(1.2)",
   });
 
-  // Anima os cards da direita (com números)
+  // Anima cards da direita com contador de números
   gsap.utils
     .toArray(".cada-conquista .content-right")
     .forEach((content, index) => {
       const numberElement = content.querySelector("p");
       const textContent = numberElement.textContent.trim();
-
-      // Extrai o número (remove '+' se existir)
       const finalValue = parseInt(textContent.replace("+", ""));
 
-      // Animação de entrada do card
       gsap.from(content, {
         scrollTrigger: {
           trigger: content,
           start: "top 80%",
-          once: true, // executa apenas uma vez
+          once: true,
           onEnter: () => {
-            // Inicia o contador quando o card entra na viewport
             animateCounter(numberElement, finalValue);
           },
         },
@@ -498,12 +501,12 @@ window.addEventListener("load", () => {
       });
     });
 
-  // Anima o título h2 da seção
+  // Anima título da seção
   gsap.from(".cada-conquista h2", {
     scrollTrigger: {
       trigger: ".cada-conquista h2",
       start: "top 85%",
-      once: true, // executa apenas uma vez
+      once: true,
     },
     opacity: 0,
     y: 30,
@@ -511,14 +514,16 @@ window.addEventListener("load", () => {
     ease: "power2.out",
   });
 
-  // Animação do modal de video
+  // ========================================
+  // MODAL DE VÍDEO
+  // ========================================
 
   const openBtn = document.getElementById("openModal");
   const closeBtn = document.getElementById("closeModal");
   const modalOverlay = document.getElementById("modalOverlay");
   const modal = document.getElementById("modal");
-
-  // Timeline for opening animation
+  const video = modal.querySelector("video");
+  // Função para abrir o modal com animação
   function openModal() {
     modalOverlay.style.visibility = "visible";
 
@@ -540,8 +545,9 @@ window.addEventListener("load", () => {
     );
   }
 
-  // Timeline for closing animation
+  // Função para fechar o modal com animação
   function closeModal() {
+    console.log("Fechando modal...");
     const tl = gsap.timeline({
       onComplete: () => {
         modalOverlay.style.visibility = "hidden";
@@ -562,35 +568,40 @@ window.addEventListener("load", () => {
       },
       "-=0.1",
     );
+
+    video.pause();
+    video.currentTime = 0;
   }
 
-  // Event listeners
+  // Event listeners do modal
   openBtn.addEventListener("click", openModal);
   closeBtn.addEventListener("click", closeModal);
 
-  // Close on overlay click
+  // Fecha ao clicar fora do modal
   modalOverlay.addEventListener("click", (e) => {
     if (e.target === modalOverlay) {
       closeModal();
     }
   });
 
-  // Close on ESC key
+  // Fecha ao pressionar ESC
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && modalOverlay.style.visibility === "visible") {
       closeModal();
     }
   });
 
-  // Testemonials
+  // ========================================
+  // SEÇÃO TESTEMONIALS (Depoimentos)
+  // ========================================
 
-  // Definir estado inicial dos cards
+  // Define estado inicial dos cards
   gsap.set(".testemonials .card", {
     opacity: 0,
     y: 50,
   });
 
-  // Animação dos cards ao aparecer na tela
+  // Anima cards ao entrar na viewport
   gsap.utils.toArray(".testemonials .card").forEach((card, index) => {
     gsap.to(card, {
       opacity: 1,
@@ -599,15 +610,15 @@ window.addEventListener("load", () => {
       delay: index * 0.15,
       ease: "power3.out",
       scrollTrigger: {
-        trigger: ".testemonials", // Trigger na seção inteira
-        start: "top 80%", // Quando a seção chegar a 80% da viewport
+        trigger: ".testemonials",
+        start: "top 80%",
         toggleActions: "play none none reverse",
-        once: true, // Anima apenas uma vez
+        once: true,
       },
     });
   });
 
-  // Animação hover suave adicional
+  // Hover effect nos cards
   const cardsTestemonials = document.querySelectorAll(".testemonials .card");
   cardsTestemonials.forEach((card) => {
     card.addEventListener("mouseenter", () => {
