@@ -57,6 +57,8 @@ h2 {
   margin-right: auto;
   width: -moz-max-content;
   width: max-content;
+  position: relative;
+  z-index: 1;
 }
 
 .button {
@@ -210,6 +212,11 @@ h2 {
   margin-left: 1.5rem;
   margin-right: 1.5rem;
   position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
 }
 .potencial .container_imgs {
   position: absolute;
@@ -221,6 +228,8 @@ h2 {
 }
 .potencial .button {
   margin: 24px auto 0 auto;
+  position: relative;
+  z-index: 1;
 }
 .potencial .container_imgs img {
   transform: translateY(20px);
@@ -259,129 +268,265 @@ h2 {
   max-width: 716px;
   margin: 0 auto 16px auto;
 }
+@media (max-width: 768px) {
+  .potencial {
+    padding-bottom: 0;
+  }
+  .potencial .button {
+    width: -moz-max-content;
+    width: max-content;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
 
-.sobre-nos {
-  padding: 80px 100px;
-  background: linear-gradient(180.17deg, rgba(255, 255, 255, 0) 0.15%, rgba(255, 177, 213, 0.1) 10.74%, rgba(178, 225, 255, 0.1) 63.68%, rgba(255, 255, 255, 0) 105.02%);
+body {
+  background: #f0fafa;
+  overflow-x: hidden;
 }
-.sobre-nos h2 {
-  font-size: 3rem;
-  color: #595959;
-  margin: 1.5rem 0;
+
+.vlabel {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 5;
+  padding: 6px 14px;
+  font-family: "Nunito", sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #aaa;
+  background: rgba(255, 255, 255, 0.7);
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
 }
-.sobre-nos .tag {
-  margin-left: 0;
-}
-.sobre-nos img {
-  width: 100%;
-}
-.sobre-nos .stackCard {
-  will-change: transform;
-}
-.sobre-nos {
-  /* 1º card */
-}
-.sobre-nos .pin-spacer:nth-child(1) .stackCard__body {
-  background: #ffe5ec;
-}
-.sobre-nos {
-  /* 2º card */
-}
-.sobre-nos .pin-spacer:nth-child(2) .stackCard__body {
-  background: #e5f4ff;
-}
-.sobre-nos {
-  /* 3º card */
-}
-.sobre-nos .pin-spacer:nth-child(3) .stackCard__body {
-  background: #e9ffe5;
-}
-.sobre-nos .cardStacking {
-  overflow: hidden;
-}
-.sobre-nos .cardStacking .cardStacking__cards {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-.sobre-nos .cardStacking .stackCard__body {
-  background: #f9f9fb;
-  padding: 1.5rem;
-}
-.sobre-nos .cardStacking .stackCard {
+
+#v4 {
   position: relative;
-  width: 100%;
-  min-height: 450px;
-  transform-origin: 50% -160%;
+  background: #f0fafa;
 }
-.sobre-nos .cardStacking .stackCard__body {
-  border-radius: 24px;
-  display: flex;
-  gap: 40px;
-  box-shadow: 0px 4px 25px #fef8fb;
+#v4 .bg-shape {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
 }
-.sobre-nos .cardStacking .stackCard__body h3,
-.sobre-nos .cardStacking .stackCard__body h4,
-.sobre-nos .cardStacking .stackCard__body p {
-  font-family: "Montserrat Alternates", Arial, Helvetica, sans-serif;
-  font-weight: 500;
+#v4 .bg-shape.s1 {
+  width: 350px;
+  height: 350px;
+  top: -100px;
+  right: -80px;
+  background: #ffdde1;
+  opacity: 0.5;
 }
-.sobre-nos .cardStacking .stackCard__body h3 {
-  font-size: 2.25rem;
-  margin-bottom: 24px;
+#v4 .bg-shape.s2 {
+  width: 250px;
+  height: 250px;
+  bottom: 50px;
+  left: -60px;
+  background: #c7f2e8;
+  opacity: 0.5;
 }
-.sobre-nos .cardStacking .stackCard__body h4 {
-  font-size: 1.5rem;
+#v4 .inner {
+  position: relative;
+  padding: 80px 24px;
+}
+#v4 .tag {
+  margin-left: 0;
+  margin-bottom: 1.5rem;
+}
+#v4 h2 {
   margin-bottom: 16px;
+  font-size: clamp(44px, 7vw, 3rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -1px;
+  color: #2a4a5a;
+  font-family: "Baloo", Arial, Helvetica, sans-serif;
 }
-.sobre-nos .cardStacking .stackCard__body p {
-  color: #595959;
+#v4 h2 .teal {
+  color: #00bfa5;
 }
-.sobre-nos .cardStacking .stackCard__body .body_description {
-  background-color: #ffffff;
-  border-radius: 24px;
-  padding: 16px;
-  margin-bottom: 16px;
+#v4 h2 .coral {
+  color: #ff7b8a;
 }
-.sobre-nos .cardStacking .stackCard__body img {
-  width: 483px;
-  height: 100%;
-  border-radius: 24px;
-  -o-object-fit: cover;
-     object-fit: cover;
+#v4 .desc {
+  max-width: 440px;
+  margin-bottom: 56px;
+  font-family: "Nunito", sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.7;
+  color: #8aacba;
 }
-.sobre-nos .spacer {
-  height: 1000px;
+#v4 .toybox {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 }
 @media (max-width: 768px) {
-  .sobre-nos {
-    padding: 0px 24px 0px 24px;
+  #v4 .toybox {
+    grid-template-columns: 1fr;
   }
-  .sobre-nos h2 {
-    font-size: 2rem;
-  }
-  .sobre-nos .cardStacking__cards {
-    gap: 16px;
-  }
-  .sobre-nos .cardStacking .stackCard__body {
+}
+#v4 .toy {
+  padding: 0 0 32px;
+  overflow: hidden;
+  border-radius: 28px;
+  box-shadow: 0 6px 0 rgba(0, 0, 0, 0.08);
+  cursor: default;
+  transition: 0.25s;
+}
+#v4 .toy:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 0 rgba(0, 0, 0, 0.06);
+}
+#v4 .toy:nth-child(1) {
+  background: #fff0f3;
+}
+#v4 .toy:nth-child(2) {
+  background: #f0f8ff;
+}
+#v4 .toy:nth-child(3) {
+  background: #f0fff6;
+}
+#v4 .toy .toy-top {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 28px 28px 20px;
+  margin-bottom: 20px;
+  border-bottom: 3px dashed rgba(0, 0, 0, 0.06);
+}
+#v4 .toy:nth-child(1) .toy-top {
+  background: #ffdde6;
+}
+#v4 .toy:nth-child(2) .toy-top {
+  background: #d6edff;
+}
+#v4 .toy:nth-child(3) .toy-top {
+  background: #ccffe8;
+}
+#v4 .toy .toy-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 60px;
+  height: 60px;
+  font-size: 36px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 18px;
+}
+#v4 .toy h3 {
+  font-family: "Baloo 2", cursive;
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+#v4 .toy:nth-child(1) h3 {
+  color: #c04060;
+}
+#v4 .toy:nth-child(2) h3 {
+  color: #2060a0;
+}
+#v4 .toy:nth-child(3) h3 {
+  color: #107850;
+}
+#v4 .toy-items {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0 28px;
+}
+#v4 .toy-item {
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 16px;
+}
+#v4 .toy-item h4 {
+  margin-bottom: 2px;
+  font-family: "Nunito", sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  color: #2a4a5a;
+}
+#v4 .toy-item p {
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #8aacba;
+}
+#v4 .cta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-top: 40px;
+}
+@media (max-width: 768px) {
+  #v4 .cta-row {
     flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 16px;
+    align-items: flex-start;
   }
-  .sobre-nos .cardStacking .stackCard__body h3 {
-    font-size: 1.5rem;
+}
+#v4 .toy-stats {
+  display: flex;
+  gap: 36px;
+}
+#v4 .toy-stats div b {
+  display: block;
+  font-family: "Montserrat Alternates", Arial, Helvetica, sans-serif;
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 1;
+  color: #2a4a5a;
+}
+#v4 .toy-stats div small {
+  font-family: "Nunito", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #8aacba;
+}
+#v4 .toy-btn {
+  padding: 16px 36px;
+  font-family: "Montserrat Alternates", Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #fff;
+  background: #ff7b8a;
+  border: none;
+  border-radius: 100px;
+  box-shadow: 0 6px 0 #d45060;
+  cursor: pointer;
+  transition: 0.2s;
+}
+#v4 .toy-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 0 #d45060;
+}
+#v4 .toy-btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 4px 0 #d45060;
+}
+@media (max-width: 766px) {
+  #v4 {
+    overflow-x: clip;
   }
-  .sobre-nos .cardStacking .stackCard__body h4 {
-    font-size: 1.25rem;
+  #v4 .button {
+    width: -moz-max-content;
+    width: max-content;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
   }
-  .sobre-nos .cardStacking .stackCard__body p {
-    font-size: 1rem;
-  }
-  .sobre-nos .cardStacking .stackCard__body img {
-    width: 100%;
-    max-width: 300px;
-    height: auto;
+  #v4 .bg-shape.s1 {
+    top: 30px;
+    right: -138px;
   }
 }
 
@@ -629,7 +774,7 @@ h2 {
 }
 @media (max-width: 768px) {
   .nosso-processo {
-    padding: 0px;
+    padding-top: 24px;
   }
   .nosso-processo h2 {
     font-size: 2rem;
@@ -1047,8 +1192,8 @@ h2 {
 }
 
 .depoimentos {
-  padding: 80px 100px;
-  background: linear-gradient(180deg, #fff2f9 0%, #ffffff 41.79%);
+  padding: 0px 0px 80px 100px;
+  background: linear-gradient(180deg, #fff2f9 0%, #f0fafa 41.79%);
 }
 .depoimentos h2 {
   font-size: 3rem;

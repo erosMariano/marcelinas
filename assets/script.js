@@ -361,39 +361,25 @@ window.addEventListener("load", () => {
   });
 
   // Sobre nós
-
-  let cards = gsap.utils.toArray(".stackCard");
-
-  let stickDistance = 0;
-
-  let firstCardST = ScrollTrigger.create({
-    trigger: cards[0],
-    start: "center center",
+  const sec = document.getElementById("v4");
+  const els = sec.querySelectorAll("h1,.toy,.cta-row,.pill-tag,.desc");
+  gsap.set(els, { opacity: 0, y: 28 });
+  gsap.to(els, {
+    opacity: 1,
+    y: 0,
+    duration: 0.6,
+    stagger: 0.08,
+    ease: "power2.out",
+    scrollTrigger: { trigger: sec, start: "top 80%" },
   });
-
-  let lastCardST = ScrollTrigger.create({
-    trigger: cards[cards.length - 1],
-    start: "center center",
-  });
-
-  cards.forEach((card, index) => {
-    var scale = 1 - (cards.length - index) * 0.025;
-    let scaleDown = gsap.to(card, {
-      scale: scale,
-      "transform-origin": '"50% ' + (lastCardST.start + stickDistance) + '"',
-    });
-
-    ScrollTrigger.create({
-      trigger: card,
-      start: "center center",
-      end: () => lastCardST.start + stickDistance,
-      pin: true,
-      markers: false,
-      pinSpacing: false,
-      ease: "none",
-      animation: scaleDown,
-      toggleActions: "restart none none reverse",
-    });
+  // Also trigger on load since it's the only section
+  gsap.to(els, {
+    opacity: 1,
+    y: 0,
+    duration: 0.6,
+    stagger: 0.08,
+    ease: "power2.out",
+    delay: 0.2,
   });
 
   // Nossos processos
