@@ -37,7 +37,9 @@ body {
   size-adjust: 105%;
 }
 body {
-  font-family: "Montserrat Alternates", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  font-family: "Montserrat Alternates", Arial, Helvetica, sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  background: #f0fafa;
+  overflow-x: hidden;
 }
 
 h1,
@@ -53,8 +55,7 @@ h2 {
   padding: 12px 16px;
   border-radius: 100px;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
+  margin-inline: auto;
   width: -moz-max-content;
   width: max-content;
   position: relative;
@@ -69,7 +70,7 @@ h2 {
   color: #fff;
   text-decoration: none;
   background-color: #e23c88;
-  border-radius: 1000px;
+  border-radius: 100px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -85,28 +86,28 @@ h2 {
   z-index: 1;
 }
 .button .arrow {
-  border-radius: 100%;
-  width: 44px;
-  height: 44px;
-  background-color: #4da2d8;
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  background-color: #4da2d8;
 }
 .button::after {
   content: "";
   background-color: #4da2d8;
   width: 60px;
+  height: 60px;
   position: absolute;
   bottom: -60px;
   left: 50%;
   transform: translateX(-50%);
-  height: 60px;
-  border-radius: 100000px;
-  transition: all 0.3s linear;
+  border-radius: 100px;
+  transition: all 0.3s ease;
 }
 .button img {
-  transition: all 0.3s linear;
+  transition: transform 0.3s ease;
 }
 .button:hover img {
   transform: rotate(-45deg);
@@ -115,7 +116,6 @@ h2 {
   height: 100%;
   width: 100%;
   bottom: 0;
-  background-color: #4da2d8;
 }
 
 .hero {
@@ -174,10 +174,9 @@ h2 {
   bottom: -28px;
   font-size: 2em;
   color: transparent;
-  -webkit-text-decoration: wavy;
-          text-decoration: wavy;
+  -webkit-text-decoration: wavy underline;
+          text-decoration: wavy underline;
   text-decoration-color: #4da2d8;
-  text-decoration-line: underline;
   animation: animateWave 2s linear infinite;
 }
 .hero .content h1 svg {
@@ -209,8 +208,7 @@ h2 {
 
 .potencial {
   padding-top: 80px;
-  margin-left: 1.5rem;
-  margin-right: 1.5rem;
+  margin-inline: 1.5rem;
   position: relative;
   min-height: 100vh;
   display: flex;
@@ -221,15 +219,9 @@ h2 {
 .potencial .container_imgs {
   position: absolute;
   top: 0;
-  left: 0;
-  width: 1430px;
   left: 50%;
   transform: translateX(-50%);
-}
-.potencial .button {
-  margin: 24px auto 0 auto;
-  position: relative;
-  z-index: 1;
+  width: 1430px;
 }
 .potencial .container_imgs img {
   transform: translateY(20px);
@@ -240,7 +232,6 @@ h2 {
   top: 100px;
   left: 0;
   z-index: -1;
-  opacity: 1;
   height: auto;
   animation: balanceImg 4s ease-in-out infinite;
 }
@@ -249,9 +240,13 @@ h2 {
   top: 200px;
   right: 0;
   z-index: -1;
-  opacity: 1;
   height: auto;
   animation: balanceImgReverse 4s ease-in-out infinite;
+}
+.potencial .button {
+  margin: 24px auto 0;
+  position: relative;
+  z-index: 1;
 }
 .potencial h2 {
   color: #595959;
@@ -260,26 +255,14 @@ h2 {
   max-width: 749px;
   text-align: center;
   width: 100%;
-  margin: 2.5rem auto 1.5rem auto;
+  margin: 2.5rem auto 1.5rem;
 }
 .potencial p {
   color: #1d1d1d;
   font-family: "Montserrat Alternates", Arial, Helvetica, sans-serif;
   text-align: center;
   max-width: 716px;
-  margin: 0 auto 16px auto;
-}
-@media (max-width: 768px) {
-  .potencial {
-    padding-bottom: 0;
-  }
-  .potencial .button {
-    width: -moz-max-content;
-    width: max-content;
-    justify-content: center;
-    margin-left: auto;
-    margin-right: auto;
-  }
+  margin: 0 auto 16px;
 }
 
 body {
@@ -517,6 +500,7 @@ body {
 @media (max-width: 766px) {
   #v4 {
     overflow-x: clip;
+    padding-top: 80px;
   }
   #v4 .button {
     width: -moz-max-content;
@@ -1043,7 +1027,7 @@ body {
 }
 
 .nossos-servicos {
-  background: linear-gradient(178.51deg, #ffeafb -24.92%, #fffbf0 22.24%, #fffbf0 81.15%, #ffeafb 129.45%);
+  background: linear-gradient(178.51deg, #fff5fa -3%, #fffbf0 22.24%, #fffbf0 81.15%, #ffeafb 129.45%);
   padding: 80px 0;
   position: relative;
   overflow: hidden;
@@ -1154,7 +1138,7 @@ body {
   background: #ffe8f4;
 }
 .nossos-servicos__cell--dark {
-  background: #1a1a2e;
+  background: #4aa5a5;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1168,7 +1152,8 @@ body {
   line-height: 1.2;
 }
 .nossos-servicos__cell--dark p {
-  color: rgba(255, 255, 255, 0.65);
+  color: rgb(255, 255, 255);
+  font-weight: 500;
 }
 .nossos-servicos__cell--dark .nossos-servicos__cta-btn {
   display: inline-block;
@@ -1227,6 +1212,21 @@ body {
   color: #1a1a2e;
 }
 
+@media (max-width: 768px) {
+  .nossos-servicos {
+    padding-top: 0;
+  }
+  .nossos-servicos__header h2 {
+    max-width: 100%;
+    margin: 24px 0;
+  }
+  .nossos-servicos__header {
+    padding-bottom: 24px;
+  }
+  .nossos-servicos__grid {
+    padding: 0;
+  }
+}
 .depoimentos {
   padding: 80px 0px 80px 100px;
   background: linear-gradient(180deg, #fff2f9 0%, #f0fafa 41.79%);
@@ -1821,15 +1821,25 @@ body {
   }
 }
 .footer {
-  background: #1a1a2e;
+  background: #e03f86;
   position: relative;
-  overflow: hidden;
-  padding-top: 0;
+  margin-top: 80px;
 }
 .footer-wave {
   width: 100%;
   line-height: 0;
   display: block;
+  top: 0px;
+  position: absolute;
+  top: -57px;
+  width: 100%;
+  left: 0;
+  z-index: 10;
+}
+@media (max-width: 580px) {
+  .footer-wave {
+    top: -38px;
+  }
 }
 .footer-wave svg {
   display: block;
@@ -1917,7 +1927,7 @@ body {
   gap: 6px;
 }
 .footer-section p {
-  color: #cbd5e1;
+  color: #fff;
   font-size: 0.9rem;
   line-height: 1.6;
   margin-bottom: 6px;
@@ -1935,7 +1945,7 @@ body {
   list-style: none;
 }
 .footer-section ul li {
-  color: #cbd5e1;
+  color: #fff;
   font-size: 0.88rem;
   padding: 4px 0;
   display: flex;
@@ -1996,7 +2006,7 @@ body {
   z-index: 1;
   text-align: center;
   padding: 18px 24px 24px;
-  color: #64748b;
+  color: #fff;
   font-size: 0.82rem;
   line-height: 1.8;
 }
