@@ -83,99 +83,27 @@ window.addEventListener("load", () => {
     },
   });
 
-  // ========================================
-  // SEÇÃO NOSSOS SERVIÇOS - Scroll interativo
-  // ========================================
+  // Estado inicial — cards invisíveis e pequenos
+  gsap.set(".nossos-servicos__cell", {
+    opacity: 0,
+    scale: 0.6,
+    y: 40,
+  });
 
-  const textItems = document.querySelectorAll(".text-item");
-  const imageItems = document.querySelectorAll(".image-item");
-  const scrollSections = document.querySelectorAll(
-    ".nossos-servicos .scroll-section",
-  );
-
-  if (!isMobile) {
-    // Inicializa o primeiro item como ativo
-    textItems[0].classList.add("active");
-    imageItems[0].classList.add("active");
-
-    let scrollTriggersArray = [];
-    let isManualClick = false;
-
-    // Cria ScrollTrigger para cada seção de serviço
-    scrollSections.forEach((section, index) => {
-      const trigger = ScrollTrigger.create({
-        trigger: section,
-        start: "top 0%",
-        end: "bottom center",
-        onEnter: () => {
-          if (!isManualClick) activateItem(index);
-        },
-        onEnterBack: () => {
-          if (!isManualClick) activateItem(index);
-        },
-      });
-      scrollTriggersArray.push(trigger);
-    });
-
-    // Adiciona clique nos itens de texto para navegar entre serviços
-    textItems.forEach((item) => {
-      item.addEventListener("click", () => {
-        const index = parseInt(item.dataset.index);
-        isManualClick = true;
-        activateItem(index);
-
-        // Scroll suave até a seção correspondente
-        if (scrollSections[index]) {
-          lenis.scrollTo(scrollSections[index], {
-            offset: -window.innerHeight / 2,
-            duration: 1.2,
-            onComplete: () => {
-              setTimeout(() => {
-                isManualClick = false;
-              }, 100);
-            },
-          });
-        }
-      });
-    });
-
-    // Função para ativar um item específico
-    function activateItem(index) {
-      // Remove active de todos os itens
-      textItems.forEach((item) => item.classList.remove("active"));
-      imageItems.forEach((item) => item.classList.remove("active"));
-
-      // Adiciona active no item atual
-      textItems[index].classList.add("active");
-
-      // Anima todas as imagens com fade in/out
-      imageItems.forEach((image, i) => {
-        if (i === index) {
-          gsap.to(image, {
-            opacity: 1,
-            duration: 0.6,
-            ease: "power2.out",
-          });
-          image.classList.add("active");
-        } else {
-          gsap.to(image, {
-            opacity: 0,
-            duration: 0.6,
-            ease: "power2.out",
-          });
-        }
-      });
-    }
-
-    // Define estado inicial das imagens
-    imageItems.forEach((image, index) => {
-      gsap.set(image, {
-        opacity: index === 0 ? 1 : 0,
-        scale: 1,
-      });
-    });
-  }
-
+  // Animação popup com stagger ao entrar na seção
+  gsap.to(".nossos-servicos__cell", {
+    opacity: 1,
+    scale: 1,
+    y: 0,
+    duration: 0.6,
+    ease: "back.out(1.8)",   // <- o "efeito borracha"
+    stagger: 0.2,            
+    scrollTrigger: {
+      trigger: ".nossos-servicos__grid",
+      start: "top -50%",    
+      toggleActions: "play none none reverse",
+    },
+  });
   // ========================================
   // SEÇÃO FAQ - Animações de entrada
   // ========================================
@@ -191,7 +119,6 @@ window.addEventListener("load", () => {
     opacity: 0,
     ease: "power3.out",
   });
-
 
   gsap.from(".faq-item", {
     scrollTrigger: {
@@ -405,7 +332,7 @@ window.addEventListener("load", () => {
     ease: "none",
     scrollTrigger: {
       trigger: ".nosso-processo .scroll-section",
-      start: `top ${isMobile ? "24px" : "80px"}`,
+      start: `top ${isMobile ? "24px" : "60px"}`,
       end: `+=${totalScroll}`,
       scrub: true,
       pin: true,
