@@ -101,6 +101,51 @@ $transition-slow: 0.4s ease;
 }
 
 // ══════════════════════════════════════════════════
+//  V4 — TOYS BOX
+//  Rounded bright toys-like blocks
+// ══════════════════════════════════════════════════
+
+// ── Tokens
+$bg-page: #f0fafa;
+$color-navy: #2a4a5a;
+$color-muted: #8aacba;
+
+$coral: #ff7b8a;
+$coral-dark: #d45060;
+$coral-h1: #c04060;
+
+$teal: #00bfa5;
+$teal-h1: #107850;
+
+$blue-h1: #2060a0;
+
+$toy-pink-bg: #fff0f3;
+$toy-pink-top: #ffdde6;
+$toy-blue-bg: #f0f8ff;
+$toy-blue-top: #d6edff;
+$toy-green-bg: #f0fff6;
+$toy-green-top: #ccffe8;
+
+$shape1-color: #ffdde1;
+$shape2-color: #c7f2e8;
+
+$item-bg: rgba(255, 255, 255, 0.7);
+$icon-bg: rgba(255, 255, 255, 0.6);
+$dashed-border: rgba(0, 0, 0, 0.06);
+$shadow-base: rgba(0, 0, 0, 0.08);
+$shadow-hover: rgba(0, 0, 0, 0.06);
+
+$font-display: "Baloo", Arial, Helvetica, sans-serif;
+$font-body: "Montserrat Alternates", Arial, Helvetica, sans-serif;
+$font-tag: "Montserrat Alternates", Arial, Helvetica, sans-serif;
+$radius-card: 28px;
+$radius-item: 16px;
+$radius-icon: 18px;
+$radius-pill: 100px;
+
+$bp-mobile: 768px;
+
+// ══════════════════════════════════════════════════
 //  BASE
 // ══════════════════════════════════════════════════
 
@@ -796,7 +841,7 @@ h2 {
   }
 
   @media (max-width: 768px) {
-    padding-top: 24px;
+    padding-top: 60px;
     h2 {
       font-size: 2rem;
     }
@@ -1547,14 +1592,10 @@ h2 {
   }
 
   .container1 {
-    display: flex;
     gap: 20px;
     margin-bottom: 20px;
     display: flex;
     flex-direction: column;
-  }
-
-  .container1 {
     justify-content: center;
   }
 
@@ -1599,38 +1640,38 @@ h2 {
       font-size: 14px;
       font-weight: 600;
     }
+  }
+  /* Mobile: um card abaixo do outro */
+  @media (max-width: $bp-tablet) {
+    padding: 60px 20px;
+    padding-top: 0;
 
-    /* Mobile: um card abaixo do outro */
-    @media (max-width: $bp-tablet) {
-      padding: 60px 20px;
-      padding-top: 0;
-
-      h2 {
-        font-size: 2rem;
-      }
-
-      .container1,
-      .container2 {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .card {
-        max-width: 100%;
-        width: 100%;
-      }
+    h2 {
+      font-size: 2rem;
     }
 
-    /* Tablet: ajuste intermediário */
-    @media (min-width: 769px) and (max-width: 1024px) {
-      padding: 60px 40px; // Padding intermediário
+    .container1,
+    .container2 {
+      flex-direction: column;
+      align-items: center;
+    }
 
-      .card {
-        max-width: 350px;
-      }
+    .card {
+      max-width: 100%;
+      width: 100%;
+    }
+  }
+
+  /* Tablet: ajuste intermediário */
+  @media (min-width: 769px) and (max-width: 1024px) {
+    padding: 60px 40px; // Padding intermediário
+
+    .card {
+      max-width: 350px;
     }
   }
 }
+
 .faq-section-wrapper {
   margin: 0 auto;
   background: linear-gradient(
@@ -1850,6 +1891,7 @@ h2 {
 
     .container h2 {
       font-size: 1.5rem;
+      text-align: center;
     }
   }
 }
@@ -2481,11 +2523,7 @@ h2 {
 .map-wrapper {
   border-radius: 20px;
   overflow: hidden;
-  border: 3px solid rgba(255, 217, 61, 0.35);
-  box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.4),
-    0 0 0 6px rgba(78, 205, 196, 0.08);
-  position: relative;
+  border: 3px solid rgba(255, 217, 61, 0.6);
 
   iframe {
     width: 100%;

@@ -332,7 +332,7 @@ window.addEventListener("load", () => {
     ease: "none",
     scrollTrigger: {
       trigger: ".nosso-processo .scroll-section",
-      start: `top ${isMobile ? "24px" : "60px"}`,
+      start: `top ${isMobile ? "50px" : "60px"}`,
       end: `+=${totalScroll}`,
       scrub: true,
       pin: true,
