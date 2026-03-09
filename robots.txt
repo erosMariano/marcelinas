@@ -1,4 +1,4 @@
-# Espaço Marcelinas - Reforço Escolar Itabuna
+# Marcelinas Espaço de Ensinar e Aprender - Reforço Escolar Itabuna
 # www.marcelinasespaco.com.br
 
 User-agent: *

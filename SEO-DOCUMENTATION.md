@@ -1,4 +1,4 @@
-# Espaço Marcelinas - Documentação SEO
+# Marcelinas Espaço de Ensinar e Aprender - Documentação SEO
 
 ## ✅ Otimizações de SEO Implementadas
 
@@ -145,7 +145,7 @@
 
 ## 📞 Contato
 
-**Espaço Marcelinas**  
+**Marcelinas Espaço de Ensinar e Aprender**  
 WhatsApp: (73) 8195-0890  
 Itabuna, Bahia - Brasil
 
