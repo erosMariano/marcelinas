@@ -12,8 +12,14 @@
   ],
   "redirects": [
     {
-      "source": "https://marcelinasespaco.com.br/:path*",
-      "destination": "https://www.marcelinasespaco.com.br/:path*",
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.marcelinasespaco.com.br"
+        }
+      ],
+      "destination": "https://marcelinasespaco.com.br/:path*",
       "permanent": true
     }
   ]

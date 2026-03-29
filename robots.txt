@@ -1,5 +1,5 @@
 # Marcelinas Espaço de Ensinar e Aprender - Reforço Escolar Itabuna
-# www.marcelinasespaco.com.br
+# marcelinasespaco.com.br
 
 User-agent: *
 Allow: /
@@ -7,7 +7,7 @@ Disallow: /admin/
 Disallow: /private/
 
 # Sitemaps
-Sitemap: https://www.marcelinasespaco.com.br/sitemap.xml
+Sitemap: https://marcelinasespaco.com.br/sitemap.xml
 
 # Crawl-delay
 Crawl-delay: 10

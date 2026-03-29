@@ -4,17 +4,17 @@
   
   <!-- Página Principal -->
   <url>
-    <loc>https://www.marcelinasespaco.com.br/</loc>
-    <lastmod>2026-02-24</lastmod>
+    <loc>https://marcelinasespaco.com.br/</loc>
+    <lastmod>2026-03-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://www.marcelinasespaco.com.br/assets/img/banner-full.avif</image:loc>
+      <image:loc>https://marcelinasespaco.com.br/assets/img/banner-full.avif</image:loc>
       <image:title>Marcelinas Espaço de Ensinar e Aprender - Reforço Escolar em Itabuna</image:title>
       <image:caption>Márcia Marcelinas ensinando crianças em sala de aula</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://www.marcelinasespaco.com.br/assets/img/marcia-marcelina.png</image:loc>
+      <image:loc>https://marcelinasespaco.com.br/assets/img/marcia-marcelina.png</image:loc>
       <image:title>Márcia Marcelina - Pedagoga e Psicopedagoga</image:title>
       <image:caption>Fundadora do Marcelinas Espaço de Ensinar e Aprender</image:caption>
     </image:image>
@@ -23,7 +23,7 @@
   <!-- Adicione outras páginas aqui quando criar -->
   <!-- Exemplo:
   <url>
-    <loc>https://www.marcelinasespaco.com.br/servicos</loc>
+    <loc>https://marcelinasespaco.com.br/servicos</loc>
     <lastmod>2026-02-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
