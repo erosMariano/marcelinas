@@ -9,5 +9,12 @@
         }
       ]
     }
+  ],
+  "redirects": [
+    {
+      "source": "https://marcelinasespaco.com.br/:path*",
+      "destination": "https://www.marcelinasespaco.com.br/:path*",
+      "permanent": true
+    }
   ]
 }
